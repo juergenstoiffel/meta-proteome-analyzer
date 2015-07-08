@@ -441,16 +441,31 @@ public class DatabaseSearchSettingsPanel extends JPanel {
             	boolean formatTargetFile = true;
             	boolean formatDecoyFile = true;
             	String filePath = "";
+            	String name = fastaFile.getName();
+                // Find all three processed files.
+                boolean phr = false;
+                boolean pin = false;
+                boolean psq = false;
+                
             	for (File file : files) {
             	    if (file.isFile()) {
-            	    	filePath += file.getAbsolutePath();
+            	    	String fileName = file.getName();
+            	        if (fileName.startsWith(name) && fileName.endsWith(".phr")) {
+                            phr = true;
+                        }
+            	        if (fileName.startsWith(name) && fileName.endsWith(".pin")) {
+            	        	pin = true;
+                        }
+            	        if (fileName.startsWith(name) && fileName.endsWith(".psq")) {
+            	        	psq = true;
+                        }
+            	    	
             	    }
             	}
 
-            	// Check for all file endings.
-    	    	if (filePath.contains(fastaFile.getName() + ".phr") && filePath.contains(fastaFile.getName() + ".pin") && filePath.contains(fastaFile.getName() + ".psq")) {
-    	    		formatTargetFile = false;
-    	    	}
+                if (phr && pin && psq) {
+                	formatTargetFile = false;
+                }
 
             	if (formatTargetFile) {
             		client.firePropertyChange("indeterminate", false, true);

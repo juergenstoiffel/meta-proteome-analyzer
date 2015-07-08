@@ -392,7 +392,7 @@ public class ExportDialog extends JDialog {
 
 		// PSMs section
 		JPanel psmPanel = new JPanel(new FormLayout("5dlu, p, 5dlu", "5dlu, f:p:g, 5dlu, p, 5dlu"));
-		JPanel psmFeaturesPanel = new JPanel(new FormLayout("5dlu, p, 30dlu, p, 5dlu", "5dlu, p, 5dlu, p, 5dlu, p, 5dlu, p, 5dlu, p, 5dlu"));
+		JPanel psmFeaturesPanel = new JPanel(new FormLayout("5dlu, p, 30dlu, p, 5dlu", "5dlu, p, 5dlu, p, 5dlu, p, 5dlu, p, 5dlu, p, 5dlu, p, 5dlu"));
 		psmNumberCbx = new JCheckBox();
 		psmNumberCbx.setText("PSM No.");
 		psmNumberCbx.setSelected(exportFields.psmNumber);
@@ -426,10 +426,12 @@ public class ExportDialog extends JDialog {
 		psmFeaturesPanel.add(psmProteinAccessionCbx, CC.xy(2,  4));
 		psmFeaturesPanel.add(psmPeptideSequenceCbx, CC.xy(2,  6));		
 		psmFeaturesPanel.add(psmSpectrumTitleCbx, CC.xy(2,  8));
-		psmFeaturesPanel.add(psmChargeCbx, CC.xy(4,  2));
+		psmFeaturesPanel.add(psmChargeCbx, CC.xy(2,  10));
 		psmFeaturesPanel.add(psmSearchEngineCbx, CC.xy(4,  4));
 		psmFeaturesPanel.add(psmQValueCbx, CC.xy(4,  6));		
-		psmFeaturesPanel.add(psmScoreCbx, CC.xy(4,  8));
+		psmFeaturesPanel.add(psmPEPCbx, CC.xy(4,  8));
+		psmFeaturesPanel.add(psmScoreCbx, CC.xy(4,  2));
+		
 		// PSM button bar
 		JPanel psmButtonPnl = new JPanel(new FormLayout("5dlu, p, 5dlu, p, 5dlu, p, 5dlu", "5dlu, p, 5dlu"));
 		// PSM export button
@@ -1026,7 +1028,7 @@ public class ExportDialog extends JDialog {
 		if(psmChargeCbx.isSelected()) exportHeaders.add(new ExportHeader(5, psmChargeCbx.getText(), ExportHeaderType.PSMS));
 		if(psmSearchEngineCbx.isSelected()) exportHeaders.add(new ExportHeader(6, psmSearchEngineCbx.getText(), ExportHeaderType.PSMS));
 		if(psmQValueCbx.isSelected()) exportHeaders.add(new ExportHeader(7, psmQValueCbx.getText(), ExportHeaderType.PSMS));
-		if(psmQValueCbx.isSelected()) exportHeaders.add(new ExportHeader(8, psmQValueCbx.getText(), ExportHeaderType.PSMS));
+		if(psmPEPCbx.isSelected()) exportHeaders.add(new ExportHeader(8, psmPEPCbx.getText(), ExportHeaderType.PSMS));
 		if(psmScoreCbx.isSelected()) exportHeaders.add(new ExportHeader(9, psmScoreCbx.getText(), ExportHeaderType.PSMS));
 		
 		// Identified Spectra
@@ -1076,6 +1078,7 @@ public class ExportDialog extends JDialog {
 		exportFields.psmCharge					= psmChargeCbx.isSelected();
 		exportFields.psmSearchEngine			= psmSearchEngineCbx.isSelected();
 		exportFields.psmQValue					= psmQValueCbx.isSelected();
+		exportFields.psmPEP						= psmPEPCbx.isSelected();
 		exportFields.psmScore					= psmScoreCbx.isSelected();
 
 		// Meta-protein entries
