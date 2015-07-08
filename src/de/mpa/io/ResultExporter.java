@@ -395,7 +395,7 @@ public class ResultExporter {
 		// Init the buffered writer.
 		BufferedWriter writer = new BufferedWriter(new FileWriter(new File(filePath)));
 		
-		boolean hasFeature[] = new boolean[8];		
+		boolean hasFeature[] = new boolean[9];		
 
 		// Protein header
 		for (ExportHeader exportHeader : exportHeaders) {
@@ -429,7 +429,8 @@ public class ResultExporter {
 						if (hasFeature[4]) writer.append(psm.getCharge() + Constants.TSV_FILE_SEPARATOR);
 						if (hasFeature[5]) writer.append(searchHit.getType().toString() + Constants.TSV_FILE_SEPARATOR);
 						if (hasFeature[6]) writer.append(searchHit.getQvalue() + Constants.TSV_FILE_SEPARATOR);
-						if (hasFeature[7]) writer.append(searchHit.getScore() + Constants.TSV_FILE_SEPARATOR);
+						if (hasFeature[7]) writer.append(searchHit.getPep() + Constants.TSV_FILE_SEPARATOR);
+						if (hasFeature[8]) writer.append(searchHit.getScore() + Constants.TSV_FILE_SEPARATOR);
 						writer.newLine();
 					}		
 				}

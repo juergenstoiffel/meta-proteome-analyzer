@@ -101,6 +101,7 @@ public class ExportDialog extends JDialog {
 	private JCheckBox psmScoreCbx;
 	private JCheckBox psmSearchEngineCbx;
 	private JCheckBox psmQValueCbx;
+	private JCheckBox psmPEPCbx;
 	private JCheckBox psmChargeCbx;
 	
 	/**
@@ -413,6 +414,9 @@ public class ExportDialog extends JDialog {
 		psmQValueCbx = new JCheckBox();
 		psmQValueCbx.setText("q-Value");
 		psmQValueCbx.setSelected(exportFields.psmQValue);
+		psmPEPCbx = new JCheckBox();
+		psmPEPCbx.setText("PEP");
+		psmPEPCbx.setSelected(exportFields.psmPEP);
 		psmScoreCbx = new JCheckBox();
 		psmScoreCbx.setText("Score");
 		psmScoreCbx.setSelected(exportFields.psmScore);
@@ -1022,7 +1026,8 @@ public class ExportDialog extends JDialog {
 		if(psmChargeCbx.isSelected()) exportHeaders.add(new ExportHeader(5, psmChargeCbx.getText(), ExportHeaderType.PSMS));
 		if(psmSearchEngineCbx.isSelected()) exportHeaders.add(new ExportHeader(6, psmSearchEngineCbx.getText(), ExportHeaderType.PSMS));
 		if(psmQValueCbx.isSelected()) exportHeaders.add(new ExportHeader(7, psmQValueCbx.getText(), ExportHeaderType.PSMS));
-		if(psmScoreCbx.isSelected()) exportHeaders.add(new ExportHeader(8, psmScoreCbx.getText(), ExportHeaderType.PSMS));
+		if(psmQValueCbx.isSelected()) exportHeaders.add(new ExportHeader(8, psmQValueCbx.getText(), ExportHeaderType.PSMS));
+		if(psmScoreCbx.isSelected()) exportHeaders.add(new ExportHeader(9, psmScoreCbx.getText(), ExportHeaderType.PSMS));
 		
 		// Identified Spectra
 		if(spectrumNumberCbx.isSelected()) exportHeaders.add(new ExportHeader(1, spectrumNumberCbx.getText(), ExportHeaderType.SPECTRA));
